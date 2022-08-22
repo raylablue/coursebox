@@ -10,6 +10,7 @@ export type Props = {
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 };
 
+// @ts-ignore
 export const getColors = (color?: Color): SerializedStyles => {
   switch (color) {
     case "primary":

@@ -1,12 +1,13 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
 import { Icons } from "./Icons";
+import { css } from "@emotion/react";
 
 export type AvalibleIcons = keyof typeof Icons;
 
 type WrapperProps = {
   /** Width and height */
-  size: string;
+  size?: number;
 };
 
 export type Props = {
@@ -17,13 +18,19 @@ export type Props = {
 
 const Wrapper = styled.div<WrapperProps>`
   color: ${({ theme }) => theme.font.regular};
-  width: ${({ size }) => size};
-  height: ${({ size }) => size};
+  ${({ size }) => {
+    const sizeRem = `${size}rem`;
+    return css`
+      width: ${sizeRem};
+      height: ${sizeRem};
+    `;
+  }}
 `;
 
-export const Icon: FC<Props> = ({ name, size = "2rem", ...rest }) => {
+export const Icon: FC<Props> = ({ name, size = 2, ...rest }) => {
   const Icon = Icons[name];
-  const sizes = { width: size, height: size };
+  const sizeInRem = `${size}rem`;
+  const sizes = { width: sizeInRem, height: sizeInRem };
 
   return (
     <Wrapper size={size}>

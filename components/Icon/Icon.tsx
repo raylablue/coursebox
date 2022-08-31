@@ -5,36 +5,19 @@ import { css } from "@emotion/react";
 
 export type AvalibleIcons = keyof typeof Icons;
 
-type WrapperProps = {
-  /** Width and height */
-  size?: number;
-};
-
 export type Props = {
   /** Icon name */
   name: AvalibleIcons;
-} & WrapperProps &
-  React.SVGProps<SVGSVGElement>;
-
-const Wrapper = styled.div<WrapperProps>`
-  color: ${({ theme }) => theme.font.regular};
-  ${({ size }) => {
-    const sizeRem = `${size}rem`;
-    return css`
-      width: ${sizeRem};
-      height: ${sizeRem};
-    `;
-  }}
-`;
+  /** Width and height */
+  size?: number;
+} & React.SVGProps<SVGSVGElement>;
 
 export const Icon: FC<Props> = ({ name, size = 2, ...rest }) => {
-  const Icon = Icons[name];
+  const Icon = styled(Icons[name])`
+    color: ${({ theme }) => theme.font.regular};
+  `;
   const sizeInRem = `${size}rem`;
   const sizes = { width: sizeInRem, height: sizeInRem };
 
-  return (
-    <Wrapper size={size}>
-      <Icon {...sizes} {...rest} />
-    </Wrapper>
-  );
+  return <Icon role="img" aria-label={name} {...sizes} {...rest} />;
 };

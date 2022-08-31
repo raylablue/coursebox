@@ -16,6 +16,7 @@ const dark = {
   font: {
     regular: "#e4ebf5e6",
     button: "#e4ebf5e6",
+    placeholder: "#bec8e4",
     warning: "#5e5c64e6",
     valid: "#49fb4fe6",
     invalid: "#ff9ea6e6",
@@ -41,6 +42,7 @@ const light = {
   font: {
     regular: "#504e55e6",
     button: "#e4ebf5e6",
+    placeholder: "#504e55e6",
     warning: "#504e55e6",
     valid: "#198754e6",
     invalid: "#dc3545e6",
